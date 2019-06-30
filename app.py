@@ -117,7 +117,7 @@ def jadwal(hari):
 		
 	return text
 
-def today_time:
+def today_time():
 	today = datetime.now()
 	text =  today.strftime("%A, %d %B %Y ") +" - " + today.strftime(" %H:%M")
 	if today.strftime("%d") == "1" :
