@@ -45,10 +45,54 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-    line_bot_api.reply_message(
+	message = str.lower(event.message.text).strip()
+	
+	message = message.split(" ")
+	
+	if message[0] == 'jadwal' :
+				
+		line_bot_api.reply_message(
+		event.reply_token,
+		TextSendMessage(text=jadwal(message[1]))
+	)
+		
+	else :
+		
+		line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text)
+        TextSendMessage(text="Maaf aku gabisa ngertiin kamu :'\nHiks:'")
     )
+    
+    
+
+
+def jadwal(hari):
+	text = ""
+	if message[1] == 'senin':
+		text = "Not set yett!"
+	elif message[1] == 'selasa':
+		text = "Not set yett!"
+	elif message[1] == 'rabu':
+		text = "Not set yett!"
+				
+	elif message[1] == 'kamis':
+		text = "Not set yett!"		
+	elif message[1] == 'jumat':
+		text = "Not set yett!"
+				
+	elif message[1] == 'sabtu':
+		text = "Free yay! \neh nugas deng :'"
+		
+	else:
+		
+		text = "jadwal apa ? yg jelas dulu kau kampret"
+		
+	return text
+	
+    
+    
+    
+   
 
 
 
