@@ -61,7 +61,7 @@ def handle_text_message(event):
 				
 		line_bot_api.reply_message(
 		event.reply_token,
-		TextSendMessage(text=jadwal(message[1]))
+		TextSendMessage(text=jadwal(message[1] if len(message)>1 else ""))
 	)
 		
 		
@@ -101,6 +101,7 @@ def handle_text_message(event):
 
 def jadwal(hari):
 	text = "jadwal apa ? yg jelas dulu kau kampret"
+	
 	if hari == "sekarang":
 		hari = hari_sekarang()
 	elif hari == "besok":
@@ -136,7 +137,7 @@ def jadwal(hari):
 	return text
 
 def today_time():
-	today = datetime.now()
+	today = datetime.now() + timedelta(hours=7)
 	text =  today.strftime("%A, %d %B %Y ") +" - " + today.strftime(" %H:%M")
 	if today.strftime("%d") == "1" :
 		text += "\nIt's " + today.strftime("%B! \nSemoga apa-apa yang diingini.\nTeramini.")
@@ -145,17 +146,20 @@ def today_time():
 	
 	
 def hari_sekarang():
+	today = datetime.now() + timedelta(hours=7)
 	wd=date.weekday(today)
 	days= ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
 	return days[wd]
 
 
 def hari_besok():
+	today = datetime.now() + timedelta(hours=7)
 	wd=date.weekday(today)
 	days= ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
 	return days[(wd+1) % 7]	
 	
 def hari_kemarin():
+	today = datetime.now() + timedelta(hours=7)
 	wd=date.weekday(today)
 	days= ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
 	return days[(wd + 6) % 7]	
