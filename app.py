@@ -1,7 +1,9 @@
 import os
+import re
 from datetime import date
 from datetime import time
 from datetime import datetime
+from datetime import timedelta
 
 from decouple import config
 from flask import (
@@ -54,8 +56,9 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
 	message = str.lower(event.message.text).strip()
-	
-	message = message.split(" ")
+	whitelist = string.ascii_letters + string.digits + ' '
+	message = ''.join(c for c in message if c in whitelist)
+	message = message.split()
 	
 	if message[0] == 'jadwal' :
 				
