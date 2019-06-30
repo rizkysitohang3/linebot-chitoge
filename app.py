@@ -70,6 +70,19 @@ def handle_text_message(event):
 		event.reply_token,
 		TextSendMessage(text=today_time)
 	)
+	
+	elif message[0] == 'hai' or message[0] == 'haii' or message[0] == 'haiii':
+		line_bot_api.reply_message(
+		event.reply_token,
+		TextSendMessage(text="iyaa\nHaii juga!")
+	)
+	
+	elif message[0] == 'halo' or message[0] == 'haloo' or message[0] == 'halooo':
+		line_bot_api.reply_message(
+		event.reply_token,
+		TextSendMessage(text="iyaa\nHaloo juga!")
+	)
+	
 		
 	else :
 		
@@ -104,7 +117,7 @@ def jadwal(hari):
 		
 	return text
 
-def today_time
+def today_time:
 	today = datetime.now()
 	text =  today.strftime("%A, %d %B %Y ") +" - " + today.strftime(" %H:%M")
 	if today.strftime("%d") == "1" :
