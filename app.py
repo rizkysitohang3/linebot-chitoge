@@ -142,7 +142,7 @@ def jadwal(hari):
 def today_time():
 	today = datetime.now() + timedelta(hours=7)
 	text =  today.strftime("%A, %d %B %Y ") +" - " + today.strftime(" %H:%M")
-	if today.strftime("%d") == "1" :
+	if today.strftime("%d") == "01" :
 		text += "\nIt's " + today.strftime("%B! \nSemoga apa-apa yang diingini.\nTeramini.")
 		
 	return text
