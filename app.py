@@ -67,7 +67,7 @@ def handle_text_message(event):
 
 
 def jadwal(hari):
-	text = ""
+	text = "jadwal apa ? yg jelas dulu kau kampret"
 	if message[1] == 'senin':
 		text = "Not set yett!"
 	elif message[1] == 'selasa':
@@ -81,9 +81,9 @@ def jadwal(hari):
 		text = "Not set yett!"
 				
 	elif message[1] == 'sabtu':
-		text = "Free yay! \neh nugas deng :'"
+		text = "Free yay! \neh.. nugas deng :'"
 		
-	else:
+	
 		
 		text = "jadwal apa ? yg jelas dulu kau kampret"
 		
