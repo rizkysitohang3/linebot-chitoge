@@ -68,7 +68,7 @@ def handle_text_message(event):
 	elif message[0] == 'now' or message[0] == 'sekarang' or message[0] == 'today':
 		line_bot_api.reply_message(
 		event.reply_token,
-		TextSendMessage(text=today_time)
+		TextSendMessage(text=today_time())
 	)
 	
 	elif message[0] == 'hai' or message[0] == 'haii' or message[0] == 'haiii':
@@ -83,6 +83,11 @@ def handle_text_message(event):
 		TextSendMessage(text="iyaa\nHaloo juga!")
 	)
 	
+	elif message[0] == 'oi' or message[0] == 'oii' or message[0] == 'woii' or message[0] == 'woi':
+		line_bot_api.reply_message(
+		event.reply_token,
+		TextSendMessage(text="Haaa?\nApaa?")
+	)
 		
 	else :
 		
@@ -96,23 +101,36 @@ def handle_text_message(event):
 
 def jadwal(hari):
 	text = "jadwal apa ? yg jelas dulu kau kampret"
+	if hari == "sekarang":
+		hari = hari_sekarang()
+	elif hari == "besok":
+		hari = hari_besok()
+	elif hari == "semalam" or hari == "kemarin":
+		hari = hari_kemarin()
+		
+	
+	
+	
+	
 	if hari == 'senin':
-		text = "Not set yett!"
+		text = "Senin :\nNot set yett!"
 	elif hari == 'selasa':
-		text = "Not set yett!"
+		text = "Selasa :\nNot set yett!"
 	elif hari == 'rabu':
-		text = "Not set yett!"
+		text = "Rabu :\nNot set yett!"
 				
 	elif hari == 'kamis':
-		text = "Not set yett!"		
+		text = "Kamis :\nNot set yett!"		
 	elif hari == 'jumat':
-		text = "Not set yett!"
+		text = "Jumat :\nNot set yett!"
 				
 	elif hari == 'sabtu':
 		text = "Free yay! \neh.. nugas deng :'"
 		
 	elif hari == 'minggu':
 		text = "Gereja kau kampret"
+		
+	
 		
 		
 	return text
@@ -121,9 +139,27 @@ def today_time():
 	today = datetime.now()
 	text =  today.strftime("%A, %d %B %Y ") +" - " + today.strftime(" %H:%M")
 	if today.strftime("%d") == "1" :
-		text += "\nWelcome " + today.strftime("%B! \nSemoga apa-apa yang diingini.\nTeramini.")
+		text += "\nIt's " + today.strftime("%B! \nSemoga apa-apa yang diingini.\nTeramini.")
 		
 	return text
+	
+	
+def hari_sekarang():
+	wd=date.weekday(today)
+	days= ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
+	return days[wd]
+
+
+def hari_besok():
+	wd=date.weekday(today)
+	days= ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
+	return days[(wd+1) % 7]	
+	
+def hari_kemarin():
+	wd=date.weekday(today)
+	days= ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
+	return days[(wd + 6) % 7]	
+		
 	
 	
 	
