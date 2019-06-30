@@ -1,4 +1,8 @@
 import os
+from datetime import date
+from datetime import time
+from datetime import datetime
+
 from decouple import config
 from flask import (
     Flask, request, abort
@@ -10,6 +14,10 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
+
+
+
+
 app = Flask(__name__)
 # get LINE_CHANNEL_ACCESS_TOKEN from your environment variable
 line_bot_api = LineBotApi(
@@ -56,6 +64,13 @@ def handle_text_message(event):
 		TextSendMessage(text=jadwal(message[1]))
 	)
 		
+		
+	elif message[0] == 'now' or message[0] == 'sekarang' or message[0] == 'today':
+		line_bot_api.reply_message(
+		event.reply_token,
+		TextSendMessage(text=today_time)
+	)
+		
 	else :
 		
 		line_bot_api.reply_message(
@@ -83,12 +98,25 @@ def jadwal(hari):
 	elif hari == 'sabtu':
 		text = "Free yay! \neh.. nugas deng :'"
 		
-	
+	elif hari == 'minggu':
+		text = "Gereja kau kampret"
 		
-		text = "jadwal apa ? yg jelas dulu kau kampret"
+		
+	return text
+
+def today_time
+	today = datetime.now()
+	text =  today.strftime("%A, %d %B %Y ") +" - " + today.strftime(" %H:%M")
+	if today.strftime("%d") == "1" :
+		text += "\nWelcome " + today.strftime("%B! \nSemoga apa-apa yang diingini.\nTeramini.")
 		
 	return text
 	
+	
+	
+	
+	
+
     
     
     
