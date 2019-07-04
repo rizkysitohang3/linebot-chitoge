@@ -1,6 +1,9 @@
 import os
 import string
 import datetime
+from datetime import datetime
+from datetime import timedelta
+from datetime import date
 
 from decouple import config
 from flask import (
@@ -67,14 +70,14 @@ def handle_text_message(event):
 	message = message.split()
 	
 	if message[0] == 'jadwal' :
-		if message[1] == 'tambah' or message[1] == 'add':
+		if ((message[1] == 'tambah' or message[1] == 'add') if len(message)>1 else False):
 			line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=add_jadwal(message[2] if len(message)>2 else "",(' '.join(message[3:])) if len(message)>3 else "" ))
 		)
 			
 			
-		elif message[1] == 'hapus' or message[1] == 'remove':
+		elif ((message[1] == 'hapus' or message[1] == 'remove') if len(message)>1 else False) :
 			line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=remove_jadwal(message[2] if len(message)>2 else "",(' '.join(message[3:])) if len(message)>3 else "" ))
