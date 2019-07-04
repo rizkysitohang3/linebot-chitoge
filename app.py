@@ -135,9 +135,6 @@ def handle_text_message(event):
 
 def jadwal(hari):
 	
-	if libur():
-		return "Masih libur elah."
-	
 	
 	
 	text = "jadwal apaan? g tw."
@@ -205,7 +202,12 @@ def jadwal(hari):
 		else:
 			text += "G ad."
 		
+	else:
+		text = "jadwal apaan? g tw."
 		
+	if libur():
+		text += "\nbtw masih libur kok."
+	
 		
 	return text
 
