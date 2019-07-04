@@ -1,9 +1,6 @@
 import os
 import string
-from datetime import date
-from datetime import time
-from datetime import datetime
-from datetime import timedelta
+import datetime
 
 from decouple import config
 from flask import (
