@@ -123,13 +123,21 @@ def handle_text_message(event):
 		
 		line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text="G tw.\nNeh cara make:\n- jadwal [sekarang/besok/semalam]\n- jadwal [hari]\n- [now/sekarang/today]\n- jadwal [tambah/add] [hari/task] [teks jadwal]\n- jadwal [hapus/remove] [hari/task] [jadwal]")
+        TextSendMessage(text="G tw.\nNeh cara make:\n- jadwal [sekarang/besok/semalam]\n- jadwal [hari/tasklist]\n- [now/sekarang/today]\n- jadwal [tambah/add] [hari/tasklist] [teks jadwal]\n- jadwal [hapus/remove] [hari/tasklist] [teks jadwal]")
     )
     
     
 
 
 def jadwal(hari):
+	global task_list
+	global jadwal_senin
+	global jadwal_selasa
+	global jadwal_rabu
+	global jadwal_kamis
+	global jadwal_jumat
+	global jadwal_sabtu
+	global jadwal_minggu
 	
 	
 	
@@ -197,6 +205,13 @@ def jadwal(hari):
 			text += '\n'.join(jadwal_minggu)
 		else:
 			text += "G ad."
+			
+	elif hari == 'tasklist':
+		text = "Tasklist :\n"
+		if len(task_list)>0:
+			text += '\n'.join(task_list)
+		else:
+			text += "G ad."
 		
 	else:
 		text = "jadwal apaan? g tw."
@@ -246,7 +261,7 @@ def libur():
 def add_jadwal(hari,text):		
 		
 	if text == "":
-		return "Jadwal ap?\nNeh cara make : jadwal [tambah/add] [hari/task] [teks jadwal]"
+		return "Jadwal ap?\nNeh cara make : jadwal [tambah/add] [hari/tasklist] [teks jadwal]"
 	
 	if hari == 'senin':
 		add_jadwal_senin(text)
@@ -271,7 +286,7 @@ def add_jadwal(hari,text):
 		add_task_list(text)
 	
 	else:
-		return "Jadwal untuk ap? kpn?\nNeh cara make : jadwal [tambah/add] [hari/task] [teks jadwal]"
+		return "Jadwal untuk ap? kpn?\nNeh cara make : jadwal [tambah/add] [hari/tasklist] [teks jadwal]"
 	
 	return "Ok."
 
@@ -279,7 +294,7 @@ def add_jadwal(hari,text):
 def remove_jadwal(hari,text):		
 		
 	if text == "":
-		return "Hapus Jadwal ap?\nNeh cara make : jadwal [hapus/remove] [hari/task] [teks jadwal]"
+		return "Hapus Jadwal ap?\nNeh cara make : jadwal [hapus/remove] [hari/tasklist] [teks jadwal]"
 	
 	if hari == 'senin':
 		remove_jadwal_senin(text)
@@ -304,63 +319,87 @@ def remove_jadwal(hari,text):
 		remove_task_list(text)
 	
 	else:
-		return "Hapus Jadwal untuk ap? kpn?\nNeh cara make : jadwal [hapus/remove] [hari/task] [teks jadwal]"
+		return "Hapus Jadwal untuk ap? kpn?\nNeh cara make : jadwal [hapus/remove] [hari/tasklist] [teks jadwal]"
 	
 	return "Ok.\nKalo ad pasti d hpus."
 
 	
 def add_jadwal_senin(text):
+	
+	global jadwal_senin
 	jadwal_senin += text
 	
 	
 def add_jadwal_selasa(text):
+	global jadwal_selasa
+	
 	jadwal_selasa += text
 	
 def add_jadwal_rabu(text):
+	global jadwal_rabu
+	
 	jadwal_rabu += text
 	
 def add_jadwal_kamis(text):
+	global jadwal_kamis
+	
+	
 	jadwal_kamis += text
 	
 	
 def add_jadwal_jumat(text):
+	global jadwal_jumat
+	
 	jadwal_jumat += text
 	
 def add_jadwal_sabtu(text):
+	global jadwal_sabtu
+	
 	jadwal_sabtu += text
 	
 def add_jadwal_minggu(text):
+	
+	global jadwal_minggu
 	jadwal_minggu += text
 	
 def add_task_list(text):
+	global task_list
 	task_list += text
 	
 	
 
 def remove_jadwal_senin(text):
+	global jadwal_senin
 	jadwal_senin = [w for w in jadwal_senin if w != text]
 	
 	
 def remove_jadwal_selasa(text):
+	global jadwal_selasa
 	jadwal_selasa = [w for w in jadwal_selasa if w != text]
 	
 def remove_jadwal_rabu(text):
+	global jadwal_rabu
 	jadwal_rabu = [w for w in jadwal_rabu if w != text]
 	
 def remove_jadwal_kamis(text):
+	global jadwal_kamis
 	jadwal_kamis = [w for w in jadwal_kamis if w != text]
 	
 	
 def remove_jadwal_jumat(text):
+	global jadwal_jumat
 	jadwal_jumat = [w for w in jadwal_jumat if w != text]
 	
 def remove_jadwal_sabtu(text):
+	global jadwal_sabtu
 	jadwal_sabtu = [w for w in jadwal_sabtu if w != text]
 	
 def remove_jadwal_minggu(text):
+	global jadwal_minggu
 	jadwal_minggu = [w for w in jadwal_minggu if w != text]
 	
 def remove_task_list(text):
+	global task_list
 	task_list = [w for w in task_list if w != text]
 	
 	
