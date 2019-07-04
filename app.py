@@ -1,9 +1,5 @@
 import os
 import string
-
-from datetime import datetime
-from datetime import timedelta
-from datetime import date
 import datetime
 
 from decouple import config
@@ -212,7 +208,7 @@ def jadwal(hari):
 	return text
 
 def today_time():
-	today = datetime.now() + timedelta(hours=7)
+	today = datetime.datetime.now() + datetime.timedelta(hours=7)
 	text =  today.strftime("%A, %d %B %Y ") +" - " + today.strftime(" %H:%M")
 	if today.strftime("%d") == "01" :
 		text += "\nSkrg awal" + today.strftime("%B. \nSemngt.\nSemoga apa-apa yang diingini...\nTeramini.")
@@ -221,27 +217,27 @@ def today_time():
 	
 	
 def hari_sekarang():
-	today = datetime.now() + timedelta(hours=7)
-	wd=date.weekday(today)
+	today = datetime.datetime.now() + datetime.timedelta(hours=7)
+	wd=datetime.date.weekday(today)
 	days= ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
 	return days[wd]
 
 
 def hari_besok():
-	today = datetime.now() + timedelta(hours=7)
-	wd=date.weekday(today)
+	today = datetime.datetime.now() + datetime.timedelta(hours=7)
+	wd=datetime.date.weekday(today)
 	days= ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
 	return days[(wd+1) % 7]	
 	
 def hari_kemarin():
-	today = datetime.now() + timedelta(hours=7)
-	wd=date.weekday(today)
+	today = datetime.datetime.now() + datetime.timedelta(hours=7)
+	wd= datetime.date.weekday(today)
 	days= ["senin","selasa","rabu","kamis","jumat","sabtu","minggu"]
 	return days[(wd + 6) % 7]	
 		
 	
 def libur():
-	today = datetime.date.today() + timedelta(hours=7)
+	today = datetime.date.today() + datetime.timedelta(hours=7)
 	start_libur = datetime.date(2019,6,1)
 	end_libur = datetime.date(2019,9,1)
 	return True if start_libur <= today <= end_libur else False
