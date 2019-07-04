@@ -327,44 +327,44 @@ def remove_jadwal(hari,text):
 def add_jadwal_senin(text):
 	
 	global jadwal_senin
-	jadwal_senin += text
+	jadwal_senin.append(text)
 	
 	
 def add_jadwal_selasa(text):
 	global jadwal_selasa
 	
-	jadwal_selasa += text
+	jadwal_selasa.append(text)
 	
 def add_jadwal_rabu(text):
 	global jadwal_rabu
 	
-	jadwal_rabu += text
+	jadwal_rabu.append(text)
 	
 def add_jadwal_kamis(text):
 	global jadwal_kamis
 	
 	
-	jadwal_kamis += text
+	jadwal_kamis.append(text)
 	
 	
 def add_jadwal_jumat(text):
 	global jadwal_jumat
 	
-	jadwal_jumat += text
+	jadwal_jumat.append(text)
 	
 def add_jadwal_sabtu(text):
 	global jadwal_sabtu
 	
-	jadwal_sabtu += text
+	jadwal_sabtu.append(text)
 	
 def add_jadwal_minggu(text):
 	
 	global jadwal_minggu
-	jadwal_minggu += text
+	jadwal_minggu.append(text)
 	
 def add_task_list(text):
 	global task_list
-	task_list += text
+	task_list.append(text)
 	
 	
 
