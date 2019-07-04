@@ -176,7 +176,7 @@ def jadwal(hari):
 				
 	elif hari == 'kamis':
 		text = "Kamis :\n"
-		if if len(jadwal_kamis)>0:
+		if len(jadwal_kamis)>0:
 			text += '\n'.join(jadwal_kamis)
 		else:
 			text += "G ad."
